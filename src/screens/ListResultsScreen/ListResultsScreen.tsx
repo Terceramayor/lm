@@ -5,7 +5,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {fetchHotelsList} from 'states/hotels/hotels.actions';
 import {HotelsState} from 'states/hotels/hotels.state';
 
+import styles from './ListResultsScreen.style';
+
 const ListResultsScreen = () => {
+  const {textStyle, textStyle1, textStyle2} = styles;
+
   useEffect(() => {
     dispatch(fetchHotelsList());
   }, []);
@@ -16,7 +20,9 @@ const ListResultsScreen = () => {
   console.log(hotelsList);
   return (
     <View>
-      <Text>ListResultsScreen</Text>
+      <Text style={textStyle}>ListResultsScreen</Text>
+      <Text style={textStyle1}>ListResultsScreen</Text>
+      <Text style={textStyle2}>ListResultsScreen</Text>
     </View>
   );
 };
