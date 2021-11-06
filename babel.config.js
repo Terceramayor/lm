@@ -13,6 +13,7 @@ module.exports = {
           constants: './src/constants',
           screens: './src/screens',
           states: './src/states',
+          theme: './src/theme',
           types: './src/types',
           utils: './src/utils',
         },
