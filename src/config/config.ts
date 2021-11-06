@@ -11,6 +11,11 @@ import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {hotelsReducer} from 'states/hotels/hotels.reducer';
+import {HotelsState} from 'states/hotels/hotels.state';
+
+export interface ApplicationState {
+  hotelsData: HotelsState;
+}
 
 let middlewares: Middleware[] = [thunk];
 
@@ -36,7 +41,7 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  hotelsList: persistReducer(hotelsListPersistConfig, hotelsReducer),
+  hotelsData: persistReducer(hotelsListPersistConfig, hotelsReducer),
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
