@@ -19,7 +19,6 @@ export const fetchHotelsList = (): ThunkResult => {
     return axios
       .get(ENDPOINT)
       .then((response: AxiosResponse<IHotel[]>) => {
-        console.log(response.data);
         dispatch(fetchCartSuccess(response.data));
       })
       .catch((error: AxiosError) => {

@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+
 import {fetchHotelsList} from 'states/hotels/hotels.actions';
+import {HotelsState} from 'states/hotels/hotels.state';
 
 const ListResultsScreen = () => {
   useEffect(() => {
@@ -10,6 +12,8 @@ const ListResultsScreen = () => {
 
   const dispatch = useDispatch();
 
+  const hotelsList = useSelector((state: HotelsState) => state.hotelsList);
+  console.log(hotelsList);
   return (
     <View>
       <Text>ListResultsScreen</Text>
