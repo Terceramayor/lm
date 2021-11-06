@@ -13,7 +13,6 @@ export enum HotelsActionTypes {
 
 export interface FetchHotelsListRequest extends Action {
   type: HotelsActionTypes.FETCHING_HOTELS_LIST;
-  payload: {isLoadingHotels: boolean};
 }
 
 export interface FetchHotelsListSuccess extends Action {
