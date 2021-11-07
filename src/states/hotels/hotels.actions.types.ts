@@ -9,6 +9,7 @@ export enum HotelsActionTypes {
   FETCHING_HOTELS_LIST = 'FETCH_CART',
   FETCH_HOTELS_LIST_SUCCESS = 'FETCH_CART_SUCCESS',
   FETCH_HOTELS_LIST_FAILURE = 'FETCH_CART_FAILURE',
+  FILTER_HOTELS_BY_CHECKING_TIMES = 'FILTER_HOTELS_BY_CHECKING_TIMES',
 }
 
 export interface FetchHotelsListRequest extends Action {
@@ -24,11 +25,16 @@ export interface FetchHotelsListFailure extends Action {
   type: HotelsActionTypes.FETCH_HOTELS_LIST_FAILURE;
   payload: {error: AxiosError};
 }
+export interface filterHotelsByCheckingTimesAction extends Action {
+  type: HotelsActionTypes.FILTER_HOTELS_BY_CHECKING_TIMES;
+  payload: {filteredHotelsList: IHotel[]};
+}
 
 export type HotelsActions =
   | FetchHotelsListRequest
   | FetchHotelsListSuccess
-  | FetchHotelsListFailure;
+  | FetchHotelsListFailure
+  | filterHotelsByCheckingTimesAction;
 
 export type ThunkResult = ThunkAction<
   void,

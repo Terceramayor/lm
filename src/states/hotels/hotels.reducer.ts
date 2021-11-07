@@ -27,6 +27,11 @@ export const hotelsReducer: Reducer<HotelsState, HotelsActions> = (
         isLoadingHotels: false,
         loadingHotelsError: action.payload.error,
       };
+    case HotelsActionTypes.FILTER_HOTELS_BY_CHECKING_TIMES:
+      return {
+        ...state,
+        hotelslistFiltered: action.payload.filteredHotelsList,
+      };
 
     default:
       return state;

@@ -30,7 +30,7 @@ const hotelsListPersistConfig = {
   key: 'hotelsList',
   storage: AsyncStorage,
   timeout: undefined,
-  blacklist: ['isLoadingHotels', 'loadingHotelsError'],
+  blacklist: ['isLoadingHotels', 'loadingHotelsError', 'hotelslistFiltered'],
 };
 
 const rootPersistConfig = {

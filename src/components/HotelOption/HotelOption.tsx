@@ -6,7 +6,6 @@ import ratingToColor from 'utils/ratingToColor';
 
 import styles from './HotelOption.style';
 
-import los from './../../../assets/images/';
 export interface HotelOptionProps {
   city: string;
   name: string;
@@ -34,6 +33,7 @@ const HotelOption = ({
     cityText,
     nameText,
     hotelStars,
+    hotelStarImage,
     priceText,
   } = styles;
 
@@ -55,7 +55,13 @@ const HotelOption = ({
         <Text style={cityText}>{city}</Text>
         <View style={nameAndStarsContainer}>
           <Text style={nameText}>{name}</Text>
-          <Text style={hotelStars}>{stars}</Text>
+          <View>
+            <Text style={hotelStars}>{stars}</Text>
+            <Image
+              style={hotelStarImage}
+              source={require('./../../../assets/icons/star.png')}
+            />
+          </View>
         </View>
         <Text style={priceText}>{`${price} ${currency} per night`}</Text>
         <Rating
