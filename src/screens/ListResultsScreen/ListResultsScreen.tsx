@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {View, FlatList, ListRenderItemInfo, Text} from 'react-native';
+import {
+  View,
+  FlatList,
+  ListRenderItemInfo,
+  Text,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 import {useSelector, useDispatch} from 'react-redux';
 import {Slider} from 'react-native-elements';
 import date from 'date-and-time';
@@ -7,10 +15,12 @@ import date from 'date-and-time';
 import {
   fetchHotelsList,
   filterHotelsByCheckingTimes,
+  sortHotelsByPrice,
 } from 'states/hotels/hotels.actions';
 import {ApplicationState} from 'config/config';
 import IHotel from 'types/states/IHotel';
 
+import Spinner from 'components/Spinner';
 import HotelOption from 'components/HotelOption';
 import ThumbSelector from 'components/ThumbSelector';
 
@@ -26,7 +36,13 @@ const ListResultsScreen = () => {
     sliderStyle,
     filtersTitleContainer,
     checkFilterTitle,
+    checkBoxContainer,
+    checkboxText,
   } = styles;
+
+  const [showOptionsBlock, setShowOptionsBlock] = useState<boolean>(false);
+
+  const [sortByPrice, setSortByPrice] = useState<boolean>(false);
 
   const [checkInSelected, setCheckInSelected] = useState<number>(0);
   const [checkInCurrent, setCheckInCurrent] = useState<number>(0);
@@ -40,9 +56,10 @@ const ListResultsScreen = () => {
   const {hotelsList, hotelslistFiltered, isLoadingHotels, loadingHotelsError} =
     useSelector((state: ApplicationState) => state.hotelsData);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHotelsList());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     hotelsList &&
@@ -53,9 +70,7 @@ const ListResultsScreen = () => {
           checkOutSelected,
         ),
       );
-  }, [checkInSelected, checkOutSelected, hotelsList]);
-
-  const dispatch = useDispatch();
+  }, [checkInSelected, checkOutSelected, hotelsList, dispatch]);
 
   const extractKey = (item: IHotel) => item.id.toString();
 
@@ -73,73 +88,120 @@ const ListResultsScreen = () => {
     );
   };
 
+  const handlePriceSorting = () => {
+    if (!sortByPrice) {
+      hotelslistFiltered && dispatch(sortHotelsByPrice(hotelslistFiltered));
+    } else {
+      hotelsList &&
+        dispatch(
+          filterHotelsByCheckingTimes(
+            hotelsList,
+            checkInSelected,
+            checkOutSelected,
+          ),
+        );
+    }
+    setSortByPrice(!sortByPrice);
+  };
+
+  const renderHotelCheckingFilters = () => {
+    return (
+      hotelsList && (
+        <>
+          <TouchableOpacity
+            onPress={() => setShowOptionsBlock(!showOptionsBlock)}>
+            <Text
+              style={
+                hotelsFound
+              }>{`${hotelsList.length} hotels found - Tap forfiltering options`}</Text>
+          </TouchableOpacity>
+          {showOptionsBlock && (
+            <>
+              <View style={checkBoxContainer}>
+                <CheckBox
+                  value={sortByPrice}
+                  onValueChange={() =>
+                    hotelslistFiltered && handlePriceSorting()
+                  }
+                />
+                <Text style={checkboxText}>Sort by price</Text>
+              </View>
+              <View style={filtersTitleContainer}>
+                <Text
+                  style={
+                    checkFilterTitle
+                  }>{`Check in ${checkInSelected}:00 earliest`}</Text>
+                <Text
+                  style={
+                    checkFilterTitle
+                  }>{`Check out ${checkOutSelected}:00 latest`}</Text>
+              </View>
+              <View style={slidersContainer}>
+                <Slider
+                  minimumValue={0}
+                  maximumValue={24}
+                  value={checkInSelected}
+                  minimumTrackTintColor={theme.colors.redLight}
+                  thumbTintColor={theme.colors.greyDark}
+                  maximumTrackTintColor={theme.colors.greenLight}
+                  onSlidingStart={() => setShowCurrentCheckIn(true)}
+                  onValueChange={value => setCheckInCurrent(Math.round(value))}
+                  onSlidingComplete={value => {
+                    setCheckInSelected(Math.round(value));
+                    setShowCurrentCheckIn(false);
+                    setSortByPrice(false);
+                  }}
+                  style={sliderStyle}
+                  thumbStyle={thumbStyle}
+                  thumbProps={{
+                    children: (
+                      <ThumbSelector
+                        currentSelectedTime={checkInCurrent}
+                        showTime={showCurrentCheckIn}
+                      />
+                    ),
+                  }}
+                />
+
+                <Slider
+                  minimumValue={0}
+                  maximumValue={24}
+                  value={checkOutSelected}
+                  minimumTrackTintColor={theme.colors.greenLight}
+                  thumbTintColor={theme.colors.greyDark}
+                  maximumTrackTintColor={theme.colors.redLight}
+                  onSlidingStart={() => setShowCurrentCheckOut(true)}
+                  onValueChange={value => setCheckOutCurrent(Math.round(value))}
+                  onSlidingComplete={value => {
+                    setCheckOutSelected(Math.round(value));
+                    setShowCurrentCheckOut(false);
+                    setSortByPrice(false);
+                  }}
+                  style={sliderStyle}
+                  thumbStyle={thumbStyle}
+                  thumbProps={{
+                    children: (
+                      <ThumbSelector
+                        currentSelectedTime={checkOutCurrent}
+                        showTime={showCurrentCheckOut}
+                      />
+                    ),
+                  }}
+                />
+              </View>
+            </>
+          )}
+        </>
+      )
+    );
+  };
+
   return (
     <View style={searchResultsContainer}>
-      {hotelsList && (
+      {isLoadingHotels && <Spinner />}
+      {hotelsList && !isLoadingHotels && !loadingHotelsError && (
         <>
-          <Text style={hotelsFound}>{`${hotelsList.length} hotels found`}</Text>
-          <View style={filtersTitleContainer}>
-            <Text
-              style={
-                checkFilterTitle
-              }>{`Check in ${checkInSelected}:00 earliest`}</Text>
-            <Text
-              style={
-                checkFilterTitle
-              }>{`Check out ${checkOutSelected}:00 latest`}</Text>
-          </View>
-          <View style={slidersContainer}>
-            <Slider
-              minimumValue={0}
-              maximumValue={24}
-              value={checkInSelected}
-              minimumTrackTintColor={theme.colors.redLight}
-              thumbTintColor={theme.colors.greyDark}
-              maximumTrackTintColor={theme.colors.greenLight}
-              onSlidingStart={() => setShowCurrentCheckIn(true)}
-              onValueChange={value => setCheckInCurrent(Math.round(value))}
-              onSlidingComplete={value => {
-                setCheckInSelected(Math.round(value));
-                setShowCurrentCheckIn(false);
-              }}
-              style={sliderStyle}
-              thumbStyle={thumbStyle}
-              thumbProps={{
-                children: (
-                  <ThumbSelector
-                    currentSelectedTime={checkInCurrent}
-                    showTime={showCurrentCheckIn}
-                  />
-                ),
-              }}
-            />
-
-            <Slider
-              minimumValue={0}
-              maximumValue={24}
-              value={checkOutSelected}
-              minimumTrackTintColor={theme.colors.greenLight}
-              thumbTintColor={theme.colors.greyDark}
-              maximumTrackTintColor={theme.colors.redLight}
-              onSlidingStart={() => setShowCurrentCheckOut(true)}
-              onValueChange={value => setCheckOutCurrent(Math.round(value))}
-              onSlidingComplete={value => {
-                setCheckOutSelected(Math.round(value));
-                setShowCurrentCheckOut(false);
-              }}
-              style={sliderStyle}
-              thumbStyle={thumbStyle}
-              thumbProps={{
-                children: (
-                  <ThumbSelector
-                    currentSelectedTime={checkOutCurrent}
-                    showTime={showCurrentCheckOut}
-                  />
-                ),
-              }}
-            />
-          </View>
-
+          {renderHotelCheckingFilters()}
           <FlatList
             data={hotelslistFiltered}
             renderItem={renderItem}

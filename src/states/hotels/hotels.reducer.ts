@@ -32,6 +32,11 @@ export const hotelsReducer: Reducer<HotelsState, HotelsActions> = (
         ...state,
         hotelslistFiltered: action.payload.filteredHotelsList,
       };
+    case HotelsActionTypes.SORT_HOTELS_BY_PRICE:
+      return {
+        ...state,
+        hotelslistFiltered: action.payload.sortedHotelsByPrice,
+      };
 
     default:
       return state;

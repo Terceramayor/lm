@@ -3,6 +3,7 @@ import theme from 'theme/theme';
 
 export default StyleSheet.create({
   searchResultsContainer: {
+    flex: 1,
     backgroundColor: theme.colors.main,
   },
   hotelsFound: {
@@ -31,5 +32,20 @@ export default StyleSheet.create({
   thumbStyle: {
     width: 20,
     height: 20,
+  },
+  checkBoxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 15,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    borderColor: theme.colors.greyMedium,
+    borderTopWidth: 1,
+  },
+  checkboxText: {
+    fontSize: 12,
+    fontFamily: theme.fonts.regular,
+    alignSelf: 'center',
+    marginLeft: 10,
   },
 });
