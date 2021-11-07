@@ -4,13 +4,11 @@ import {
   FlatList,
   ListRenderItemInfo,
   Text,
-  Modal,
   TouchableOpacity,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import {useSelector, useDispatch} from 'react-redux';
 import {Slider} from 'react-native-elements';
-import date from 'date-and-time';
 
 import {
   fetchHotelsList,
@@ -27,7 +25,7 @@ import ThumbSelector from 'components/ThumbSelector';
 import styles from './ListResultsScreen.style';
 import theme from 'theme/theme';
 
-const ListResultsScreen = () => {
+const ListResultsScreen = ({navigation}: any) => {
   const {
     searchResultsContainer,
     hotelsFound,
@@ -75,17 +73,7 @@ const ListResultsScreen = () => {
   const extractKey = (item: IHotel) => item.id.toString();
 
   const renderItem = ({item}: ListRenderItemInfo<IHotel>) => {
-    return (
-      <HotelOption
-        city={item.location.city}
-        name={item.name}
-        price={item.price}
-        currency={item.currency}
-        stars={item.stars}
-        userRating={item.userRating}
-        showImage={(item.gallery.length > 0 && item.gallery[0]) || undefined}
-      />
-    );
+    return <HotelOption navigation={navigation} hotelDetails={item} />;
   };
 
   const handlePriceSorting = () => {

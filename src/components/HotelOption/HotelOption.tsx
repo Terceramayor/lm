@@ -2,29 +2,18 @@ import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Rating} from 'react-native-elements';
 
+import IHotel from 'types/states/IHotel';
 import ratingToColor from 'utils/ratingToColor';
+import screenNames from 'constants/screenNames';
 
 import styles from './HotelOption.style';
 
 export interface HotelOptionProps {
-  city: string;
-  name: string;
-  price: number;
-  currency: string;
-  stars: number;
-  userRating: number;
-  showImage?: string;
+  hotelDetails: IHotel;
+  navigation: any;
 }
 
-const HotelOption = ({
-  city,
-  name,
-  price,
-  currency,
-  stars,
-  userRating,
-  showImage,
-}: HotelOptionProps) => {
+const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
   const {
     hotelOptionContainer,
     mainImage,
@@ -37,17 +26,33 @@ const HotelOption = ({
     priceText,
   } = styles;
 
+  const {
+    location: {city},
+    name,
+    price,
+    currency,
+    stars,
+    userRating,
+    gallery,
+  } = hotelDetails;
+
   const [showErrorImage, setshowErrorImage] = useState<boolean>(false);
 
   return (
-    <TouchableOpacity style={hotelOptionContainer}>
+    <TouchableOpacity
+      style={hotelOptionContainer}
+      onPress={() =>
+        navigation.navigate(screenNames.HOTEL_DETAILS_SCREEN, {hotelDetails})
+      }>
       <Image
         source={
-          (!showErrorImage && {uri: showImage}) ||
+          (!showErrorImage && {
+            uri: gallery.length > 0 && gallery[0],
+          }) ||
           require('./../../../assets/images/errorHouse.png')
         }
         style={mainImage}
-        onError={e => {
+        onError={() => {
           setshowErrorImage(true);
         }}
       />
