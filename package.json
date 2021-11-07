@@ -8,21 +8,27 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "testCov": "clear && jest --collect-coverage --watchAll"
+    "testCov": "clear && jest --collect-coverage --watchAll",
+    "link": "npx react-native link"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.11",
     "@react-native-community/checkbox": "^0.5.9",
+    "@react-native-mapbox-gl/maps": "^8.4.0",
     "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
+    "@types/react-native-snap-carousel": "^3.8.5",
     "axios": "^0.24.0",
     "date-and-time": "^2.0.1",
     "react": "17.0.2",
     "react-native": "0.66.1",
+    "react-native-dotenv": "^3.3.0",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^9.0.0",
     "redux": "^4.1.2"
   },

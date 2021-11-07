@@ -5,7 +5,6 @@ export default StyleSheet.create({
   hotelOptionContainer: {
     flexDirection: 'row',
     backgroundColor: theme.colors.greyLight,
-    borderRadius: 5,
     padding: 10,
     margin: 2,
   },
@@ -34,7 +33,7 @@ export default StyleSheet.create({
   },
   nameText: {
     flex: 0.75,
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: theme.fonts.regular,
     color: theme.colors.greyDark,
   },

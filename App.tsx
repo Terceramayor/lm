@@ -7,7 +7,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import ListResultsScreen from 'screens/ListResultsScreen';
+import HotelDetailsScreen from 'screens/HotelDetailsScreen';
 import configureStore from 'config/config';
+
+import screenNames from 'constants/screenNames';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +23,12 @@ const App = () => {
           persistor={configureStore().persistor}>
           <Stack.Navigator>
             <Stack.Screen
-              name="ListResultsScreen"
+              name={screenNames.SEARCH_RESULTS}
               component={ListResultsScreen}
+            />
+            <Stack.Screen
+              name={screenNames.HOTEL_DETAILS_SCREEN}
+              component={HotelDetailsScreen}
             />
           </Stack.Navigator>
         </PersistGate>
