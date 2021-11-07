@@ -10,8 +10,7 @@ export default StyleSheet.create({
     margin: 2,
   },
   mainImage: {
-    fkex: 1,
-    width: 100,
+    flex: 1,
     aspectRatio: 1,
     resizeMode: 'cover',
     marginRight: 5,
@@ -23,7 +22,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'rgb(255,255,255)',
   },
-
   cityText: {
     marginBottom: 10,
     fontFamily: theme.fonts.bold,
@@ -32,6 +30,7 @@ export default StyleSheet.create({
   nameAndStarsContainer: {
     marginBottom: 5,
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   nameText: {
     flex: 0.75,
@@ -39,10 +38,17 @@ export default StyleSheet.create({
     fontFamily: theme.fonts.regular,
     color: theme.colors.greyDark,
   },
+  hotelStarImage: {
+    width: 25,
+    height: 25,
+    position: 'absolute',
+  },
   hotelStars: {
+    width: 25,
+    height: 25,
     textAlign: 'center',
-    flex: 0.25,
-    marginLeft: 5,
+    lineHeight: 25,
+    fontSize: 8,
     fontFamily: theme.fonts.bold,
     color: theme.colors.greyDark,
   },

@@ -1,6 +1,12 @@
 import {ThunkDispatch} from 'redux-thunk';
+import {Dispatch} from 'react-redux';
 import axios, {AxiosError, AxiosResponse} from 'axios';
+import date from 'date-and-time';
 
+import {
+  FilterHotelsByCheckingTimesAction,
+  SortHotelsByPrice,
+} from 'states/hotels/hotels.actions.types';
 import {HotelsState} from './hotels.state';
 import {
   HotelsActionTypes,
@@ -42,3 +48,35 @@ export const fetchCartFailure = (error: AxiosError): HotelsActions => ({
   type: HotelsActionTypes.FETCH_HOTELS_LIST_FAILURE,
   payload: {error: {...error}},
 });
+
+export const filterHotelsByCheckingTimes = (
+  hotelListToFilter: IHotel[],
+  checkIn: number,
+  checkOut: number,
+) => {
+  let filteredHotelsList = hotelListToFilter.filter(hotel => {
+    return (
+      date.preparse(hotel.checkIn.from, 'HH:mm:ss').H >= checkIn &&
+      date.preparse(hotel.checkOut.to, 'HH:mm:ss').H >= checkOut
+    );
+  });
+  return (dispatch: Dispatch<FilterHotelsByCheckingTimesAction>) => {
+    dispatch({
+      type: HotelsActionTypes.FILTER_HOTELS_BY_CHECKING_TIMES,
+      payload: {filteredHotelsList},
+    });
+  };
+};
+
+export const sortHotelsByPrice = (hotelListToSortByPrice: IHotel[]) => {
+  let sortedHotelsByPrice = [...hotelListToSortByPrice];
+  sortedHotelsByPrice.sort((a, b) => {
+    return a.price - b.price;
+  });
+  return (dispatch: Dispatch<SortHotelsByPrice>) => {
+    dispatch({
+      type: HotelsActionTypes.SORT_HOTELS_BY_PRICE,
+      payload: {sortedHotelsByPrice},
+    });
+  };
+};
