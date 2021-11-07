@@ -130,7 +130,7 @@ const ListResultsScreen = ({navigation}: any) => {
                   maximumValue={24}
                   value={checkInSelected}
                   minimumTrackTintColor={theme.colors.redLight}
-                  thumbTintColor={theme.colors.greyDark}
+                  thumbTintColor={theme.colors.white}
                   maximumTrackTintColor={theme.colors.greenLight}
                   onSlidingStart={() => setShowCurrentCheckIn(true)}
                   onValueChange={value => setCheckInCurrent(Math.round(value))}
@@ -155,9 +155,9 @@ const ListResultsScreen = ({navigation}: any) => {
                   minimumValue={0}
                   maximumValue={24}
                   value={checkOutSelected}
-                  minimumTrackTintColor={theme.colors.greenLight}
-                  thumbTintColor={theme.colors.greyDark}
-                  maximumTrackTintColor={theme.colors.redLight}
+                  minimumTrackTintColor={theme.colors.redLight}
+                  thumbTintColor={theme.colors.white}
+                  maximumTrackTintColor={theme.colors.greenLight}
                   onSlidingStart={() => setShowCurrentCheckOut(true)}
                   onValueChange={value => setCheckOutCurrent(Math.round(value))}
                   onSlidingComplete={value => {

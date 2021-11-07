@@ -7,7 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: 20,
     height: 20,
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.greyMedium,
     borderRadius: 15,
   },
   timeStyle: {

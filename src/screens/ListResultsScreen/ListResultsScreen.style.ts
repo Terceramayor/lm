@@ -11,11 +11,11 @@ export default StyleSheet.create({
     marginVertical: 12,
     fontSize: 12,
     fontFamily: theme.fonts.regular,
-    color: theme.colors.greyDark,
+    color: theme.colors.white,
   },
   checkFilterTitle: {
     fontFamily: theme.fonts.bold,
-    color: theme.colors.greyDark,
+    color: theme.colors.white,
     fontSize: 10,
   },
   filtersTitleContainer: {
@@ -37,7 +37,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 15,
-    marginHorizontal: 10,
+    marginBottom: 10,
     marginVertical: 10,
     borderColor: theme.colors.greyMedium,
     borderTopWidth: 1,
@@ -47,5 +47,6 @@ export default StyleSheet.create({
     fontFamily: theme.fonts.regular,
     alignSelf: 'center',
     marginLeft: 10,
+    color: theme.colors.white,
   },
 });

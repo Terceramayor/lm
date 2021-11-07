@@ -1,8 +1,8 @@
 export default {
   colors: {
-    main: '#80D4FF',
+    main: '#26384f',
     secondary: '#DCB48C',
-    greyLight: '#F0F0F0',
+    greyLight: '#FAFAFA',
     greyMedium: '#C8C8C8',
     greyDark: '#646464',
     greyDarkDeep: '#323232',
