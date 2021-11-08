@@ -4,6 +4,7 @@ import theme from 'theme/theme';
 export default StyleSheet.create({
   searchResultsContainer: {
     flex: 1,
+    paddingBottom: 24,
     backgroundColor: theme.colors.main,
   },
   hotelsFound: {
