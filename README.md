@@ -19,5 +19,6 @@ Made with React Native + TypeScript
   - For iOS through Xcode:
     - Iphone 13 pro max (recomended for better UX)
     - Iphone 7
-  - For Android through Android Studio:
-    - Google Pixel 3 a
+  - For Android:
+    - Google Pixel 3a through Android Studio
+    - Xiaomi Note 10 lite through phycical device
