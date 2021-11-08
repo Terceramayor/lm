@@ -14,7 +14,10 @@ export interface IContact {
   phoneNumber: string;
   email: string;
 }
-
+export interface ICheckingKeys {
+  checkIn: ICheckTimes;
+  checkOut: ICheckTimes;
+}
 export default interface IHotel {
   id: number;
   name: string;

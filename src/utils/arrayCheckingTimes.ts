@@ -1,6 +1,6 @@
 import date from 'date-and-time';
 
-import IHotel, {IHotelKeys, ICheckTimes} from 'types/states/IHotel';
+import IHotel, {ICheckingKeys, ICheckTimes} from 'types/states/IHotel';
 
 export interface IHotelIndex {
   [key: string]: string;
@@ -8,12 +8,12 @@ export interface IHotelIndex {
 
 const arrayCheckingTimes = (
   hotelsArray: IHotel[],
-  checkingOption: keyof IHotelKeys,
+  checkingOption: keyof ICheckingKeys,
   timeReference: keyof ICheckTimes,
 ): Number[] => {
   let checkingTimeArray: Number[] = [];
 
-  hotelsArray.forEach((hotel, index) => {
+  hotelsArray.forEach(hotel => {
     checkingTimeArray.push(
       date.preparse(
         hotel[checkingOption][timeReference] === '24:00'

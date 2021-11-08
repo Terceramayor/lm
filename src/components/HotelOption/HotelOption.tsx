@@ -24,6 +24,7 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
     hotelStars,
     hotelStarImage,
     priceText,
+    hotelStarsContainer,
   } = styles;
 
   const {
@@ -60,7 +61,7 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
         <Text style={cityText}>{city}</Text>
         <View style={nameAndStarsContainer}>
           <Text style={nameText}>{name}</Text>
-          <View>
+          <View style={hotelStarsContainer}>
             <Text style={hotelStars}>{stars}</Text>
             <Image
               style={hotelStarImage}
