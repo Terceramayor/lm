@@ -1,4 +1,4 @@
 export default {
-  SEARCH_RESULTS: 'SEARCH_RESULTS',
-  HOTEL_DETAILS_SCREEN: 'HOTEL_DETAILS_SCREEN',
+  SEARCH_RESULTS: 'Search Results',
+  HOTEL_DETAILS_SCREEN: 'Hotel details',
 };

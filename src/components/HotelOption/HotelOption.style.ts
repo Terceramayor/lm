@@ -37,6 +37,9 @@ export default StyleSheet.create({
     fontFamily: theme.fonts.regular,
     color: theme.colors.greyDark,
   },
+  hotelStarsContainer: {
+    alignSelf: 'center',
+  },
   hotelStarImage: {
     width: 25,
     height: 25,

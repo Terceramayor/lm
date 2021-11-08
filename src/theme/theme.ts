@@ -9,6 +9,7 @@ export default {
     greenLight: '#B4FFB4',
     redLight: '#FFB4B4',
     white: '#FFFFFF',
+    terracota: '#f4511e',
   },
   fonts: {
     light: 'Montserrat-Thin',
