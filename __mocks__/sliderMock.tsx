@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const ratingMock = () => {
+const sliderMock = () => {
   return <Text>Hola</Text>;
 };
 
-export default ratingMock;
+export default sliderMock;

@@ -11,11 +11,11 @@ import IHotel from 'types/states/IHotel';
 
 MapboxGL.setAccessToken(MAPBOX_TOKEN);
 
-export interface HotelDetailsScreen {
+export interface HotelDetailsScreenProps {
   route: {params: {hotelDetails: IHotel}};
 }
 
-const HotelDetailsScreen = (props: HotelDetailsScreen) => {
+const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
   const {
     location,
     name,
@@ -163,7 +163,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
                 <Text style={contactDetailKeyValue}>{'phone:'}</Text>
               </View>
               <Text
-                style={contactDetailKeyValue}>{`${contact.phoneNumber} `}</Text>
+                style={contactDetailKeyValue}>{`${contact.phoneNumber}`}</Text>
             </View>
           </View>
           {renderSeparator()}

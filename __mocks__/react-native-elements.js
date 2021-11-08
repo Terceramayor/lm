@@ -1,6 +1,5 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-
 import ratingMock from './ratingMock';
+import sliderMock from './sliderMock';
 
 export const Rating = ratingMock;
+export const Slider = sliderMock;

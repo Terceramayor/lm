@@ -97,6 +97,7 @@ const ListResultsScreen = ({navigation}: any) => {
       hotelsList && (
         <>
           <TouchableOpacity
+            testID={'filtersOnPress'}
             onPress={() => setShowOptionsBlock(!showOptionsBlock)}>
             <Text
               style={
@@ -191,6 +192,7 @@ const ListResultsScreen = ({navigation}: any) => {
         <>
           {renderHotelCheckingFilters()}
           <FlatList
+            testID={'hotelsFlatList'}
             data={hotelslistFiltered}
             renderItem={renderItem}
             keyExtractor={extractKey}
