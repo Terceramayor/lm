@@ -1,5 +1,6 @@
 import React from 'react';
 import {ActivityIndicator, View} from 'react-native';
+
 import styles from './Spinner.style';
 import theme from 'theme/theme';
 

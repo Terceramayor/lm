@@ -4,10 +4,12 @@ import MapboxGL from '@react-native-mapbox-gl/maps';
 import Carousel from 'react-native-snap-carousel';
 
 import {MAPBOX_TOKEN} from '@env';
+import IHotel from 'types/states/IHotel';
+
 import styles from './HotelDetailsScreen.style';
 import theme from 'theme/theme';
+
 import hoteslDescriptions from 'constants/hoteslDescriptions';
-import IHotel from 'types/states/IHotel';
 
 MapboxGL.setAccessToken(MAPBOX_TOKEN);
 
@@ -52,6 +54,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
   } = styles;
 
   const [showErrorImage, setshowErrorImage] = useState<boolean>(false);
+
   const renderItem = (itemData: {index: number; item: string}) => {
     return (
       <View style={imageandTextContainer}>

@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Rating} from 'react-native-elements';
 
-import IHotel from 'types/states/IHotel';
 import ratingToColor from 'utils/ratingToColor';
 import screenNames from 'constants/screenNames';
+
+import IHotel from 'types/states/IHotel';
 
 import styles from './HotelOption.style';
 

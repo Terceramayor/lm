@@ -7,8 +7,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: 20,
     height: 20,
-    backgroundColor: theme.colors.greyMedium,
     borderRadius: 15,
+    backgroundColor: theme.colors.greyMedium,
   },
   timeStyle: {
     textAlign: 'center',
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     height: 20,
     lineHeight: 20,
     fontSize: 10,
-    color: theme.colors.greyDark,
     fontFamily: theme.fonts.bold,
+    color: theme.colors.greyDark,
   },
 });
