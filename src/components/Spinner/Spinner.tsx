@@ -8,7 +8,11 @@ const Spinner = () => {
 
   return (
     <View style={spinnerContainer}>
-      <ActivityIndicator color={theme.colors.greyDark} size={'large'} />
+      <ActivityIndicator
+        color={theme.colors.greyDark}
+        size={'large'}
+        testID="spinerTestId"
+      />
     </View>
   );
 };

@@ -38,9 +38,9 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
   } = hotelDetails;
 
   const [showErrorImage, setshowErrorImage] = useState<boolean>(false);
-
   return (
     <TouchableOpacity
+      testID={'hotelOnPress'}
       style={hotelOptionContainer}
       onPress={() =>
         navigation.navigate(screenNames.HOTEL_DETAILS_SCREEN, {hotelDetails})
