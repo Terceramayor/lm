@@ -38,7 +38,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 15,
     marginBottom: 10,
-    marginVertical: 10,
     borderColor: theme.colors.greyMedium,
     borderTopWidth: 1,
   },

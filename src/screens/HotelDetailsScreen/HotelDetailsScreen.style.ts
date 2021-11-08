@@ -11,7 +11,8 @@ export default StyleSheet.create({
   checkingTimesContainer: {
     width: '100%',
     paddingLeft: 5,
-    marginBottom: 25,
+    paddingBottom: 25,
+    backgroundColor: theme.colors.white,
   },
   checkinInfo: {
     paddingTop: 15,
