@@ -154,7 +154,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
                 />
                 <Text style={contactDetailKeyValue}>{'email:'}</Text>
               </View>
-              <Text style={contactDetailKeyValue}>{`${contact.email} `}</Text>
+              <Text style={contactDetailKeyValue}>{`${contact.email}`}</Text>
             </View>
             <View style={contactDetailsBlock}>
               <View style={iconKeyContainer}>

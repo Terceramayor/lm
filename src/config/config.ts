@@ -17,12 +17,10 @@ export interface ApplicationState {
   hotelsData: HotelsState;
 }
 
-let middlewares: Middleware[] = [thunk];
-
 const reduxImmutableStateInvariant =
   require('redux-immutable-state-invariant').default();
 
-middlewares = [...middlewares, reduxImmutableStateInvariant, logger];
+const middlewares: Middleware[] = [thunk, reduxImmutableStateInvariant, logger];
 
 const enhancers = [applyMiddleware(...middlewares)];
 
