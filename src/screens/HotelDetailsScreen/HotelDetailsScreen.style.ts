@@ -22,9 +22,9 @@ export default StyleSheet.create({
     color: theme.colors.greyDarkDeep,
   },
   priceStyle: {
-    paddingTop: 25,
+    paddingVertical: 15,
     fontSize: 12,
-    fontFamily: theme.fonts.regular,
+    fontFamily: theme.fonts.bold,
     color: theme.colors.greyDarkDeep,
   },
   imageandTextContainer: {

@@ -111,7 +111,7 @@ const ListResultsScreen = ({navigation}: any) => {
             <Text
               style={
                 hotelsFound
-              }>{`${hotelsList.length} hotels found - Tap forfiltering options`}</Text>
+              }>{`${hotelsList.length} hotels found - Tap for filtering options`}</Text>
           </TouchableOpacity>
           {showOptionsBlock && (
             <>

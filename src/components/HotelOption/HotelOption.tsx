@@ -8,6 +8,7 @@ import screenNames from 'constants/screenNames';
 import IHotel from 'types/states/IHotel';
 
 import styles from './HotelOption.style';
+import theme from 'theme/theme';
 
 export interface HotelOptionProps {
   hotelDetails: IHotel;
@@ -74,9 +75,10 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
         <Rating
           type="custom"
           ratingColor={ratingToColor(userRating)}
+          ratingBackgroundColor={theme.colors.greyMedium}
           showRating={false}
           readonly
-          imageSize={10}
+          imageSize={15}
           ratingCount={10}
           tintColor={infoContainer.backgroundColor}
           fractions={2}

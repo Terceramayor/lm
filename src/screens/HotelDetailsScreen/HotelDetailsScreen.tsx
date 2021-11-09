@@ -7,7 +7,6 @@ import {MAPBOX_TOKEN} from '@env';
 import IHotel from 'types/states/IHotel';
 
 import styles from './HotelDetailsScreen.style';
-import theme from 'theme/theme';
 
 import hoteslDescriptions from 'constants/hoteslDescriptions';
 
@@ -114,10 +113,10 @@ const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
     return (
       <View style={checkingTimesContainer}>
         <Text style={checkinInfo}>
-          {`Checking: from: ${checkIn.from} to: ${checkIn.to}`}
+          {`- Checking: from: ${checkIn.from} to: ${checkIn.to}`}
         </Text>
         <Text style={checkinInfo}>
-          {`Checkout: from: ${checkOut.from} to: ${checkOut.to}`}
+          {`- Checkout: from: ${checkOut.from} to: ${checkOut.to}`}
         </Text>
       </View>
     );
@@ -128,7 +127,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
   return (
     <ScrollView>
       <View style={hotelDetailsContainer}>
-        <Text style={priceStyle}> {`${price} ${currency} per night`}` </Text>
+        <Text style={priceStyle}> {`${price} ${currency} per night`}</Text>
         <Carousel
           layout={'default'}
           data={gallery}
