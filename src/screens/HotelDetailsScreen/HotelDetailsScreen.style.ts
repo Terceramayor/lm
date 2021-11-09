@@ -11,7 +11,8 @@ export default StyleSheet.create({
   checkingTimesContainer: {
     width: '100%',
     paddingLeft: 5,
-    marginBottom: 25,
+    paddingBottom: 25,
+    backgroundColor: theme.colors.white,
   },
   checkinInfo: {
     paddingTop: 15,
@@ -21,9 +22,9 @@ export default StyleSheet.create({
     color: theme.colors.greyDarkDeep,
   },
   priceStyle: {
-    paddingTop: 25,
+    paddingVertical: 15,
     fontSize: 12,
-    fontFamily: theme.fonts.regular,
+    fontFamily: theme.fonts.bold,
     color: theme.colors.greyDarkDeep,
   },
   imageandTextContainer: {

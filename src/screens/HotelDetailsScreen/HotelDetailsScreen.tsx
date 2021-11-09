@@ -4,18 +4,19 @@ import MapboxGL from '@react-native-mapbox-gl/maps';
 import Carousel from 'react-native-snap-carousel';
 
 import {MAPBOX_TOKEN} from '@env';
-import styles from './HotelDetailsScreen.style';
-import theme from 'theme/theme';
-import hoteslDescriptions from 'constants/hoteslDescriptions';
 import IHotel from 'types/states/IHotel';
+
+import styles from './HotelDetailsScreen.style';
+
+import hoteslDescriptions from 'constants/hoteslDescriptions';
 
 MapboxGL.setAccessToken(MAPBOX_TOKEN);
 
-export interface HotelDetailsScreen {
+export interface HotelDetailsScreenProps {
   route: {params: {hotelDetails: IHotel}};
 }
 
-const HotelDetailsScreen = (props: HotelDetailsScreen) => {
+const HotelDetailsScreen = (props: HotelDetailsScreenProps) => {
   const {
     location,
     name,
@@ -52,6 +53,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
   } = styles;
 
   const [showErrorImage, setshowErrorImage] = useState<boolean>(false);
+
   const renderItem = (itemData: {index: number; item: string}) => {
     return (
       <View style={imageandTextContainer}>
@@ -111,10 +113,10 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
     return (
       <View style={checkingTimesContainer}>
         <Text style={checkinInfo}>
-          {`Checking: from: ${checkIn.from} to: ${checkIn.to}`}
+          {`- Checking: from: ${checkIn.from} to: ${checkIn.to}`}
         </Text>
         <Text style={checkinInfo}>
-          {`Checkout: from: ${checkOut.from} to: ${checkOut.to}`}
+          {`- Checkout: from: ${checkOut.from} to: ${checkOut.to}`}
         </Text>
       </View>
     );
@@ -125,7 +127,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
   return (
     <ScrollView>
       <View style={hotelDetailsContainer}>
-        <Text style={priceStyle}> {`${price} ${currency} per night`}` </Text>
+        <Text style={priceStyle}> {`${price} ${currency} per night`}</Text>
         <Carousel
           layout={'default'}
           data={gallery}
@@ -152,7 +154,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
                 />
                 <Text style={contactDetailKeyValue}>{'email:'}</Text>
               </View>
-              <Text style={contactDetailKeyValue}>{`${contact.email} `}</Text>
+              <Text style={contactDetailKeyValue}>{`${contact.email}`}</Text>
             </View>
             <View style={contactDetailsBlock}>
               <View style={iconKeyContainer}>
@@ -163,7 +165,7 @@ const HotelDetailsScreen = (props: HotelDetailsScreen) => {
                 <Text style={contactDetailKeyValue}>{'phone:'}</Text>
               </View>
               <Text
-                style={contactDetailKeyValue}>{`${contact.phoneNumber} `}</Text>
+                style={contactDetailKeyValue}>{`${contact.phoneNumber}`}</Text>
             </View>
           </View>
           {renderSeparator()}

@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Rating} from 'react-native-elements';
 
-import IHotel from 'types/states/IHotel';
 import ratingToColor from 'utils/ratingToColor';
 import screenNames from 'constants/screenNames';
 
+import IHotel from 'types/states/IHotel';
+
 import styles from './HotelOption.style';
+import theme from 'theme/theme';
 
 export interface HotelOptionProps {
   hotelDetails: IHotel;
@@ -38,9 +40,9 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
   } = hotelDetails;
 
   const [showErrorImage, setshowErrorImage] = useState<boolean>(false);
-
   return (
     <TouchableOpacity
+      testID={'hotelOnPress'}
       style={hotelOptionContainer}
       onPress={() =>
         navigation.navigate(screenNames.HOTEL_DETAILS_SCREEN, {hotelDetails})
@@ -73,9 +75,10 @@ const HotelOption = ({hotelDetails, navigation}: HotelOptionProps) => {
         <Rating
           type="custom"
           ratingColor={ratingToColor(userRating)}
+          ratingBackgroundColor={theme.colors.greyMedium}
           showRating={false}
           readonly
-          imageSize={10}
+          imageSize={15}
           ratingCount={10}
           tintColor={infoContainer.backgroundColor}
           fractions={2}

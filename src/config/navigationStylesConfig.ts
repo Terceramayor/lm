@@ -7,6 +7,7 @@ export default {
     headerStyle: {
       backgroundColor: theme.colors.terracota,
     },
+    headerTitleAlign: 'center',
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
@@ -17,6 +18,7 @@ export default {
     headerStyle: {
       backgroundColor: theme.colors.terracota,
     },
+    headerTitleAlign: 'center',
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',

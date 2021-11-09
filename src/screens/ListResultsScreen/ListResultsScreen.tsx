@@ -16,6 +16,7 @@ import {
   sortHotelsByPrice,
 } from 'states/hotels/hotels.actions';
 import {ApplicationState} from 'config/config';
+
 import IHotel from 'types/states/IHotel';
 
 import Spinner from 'components/Spinner';
@@ -38,6 +39,8 @@ const ListResultsScreen = ({navigation}: any) => {
     checkboxText,
   } = styles;
 
+  //useState deckaration block
+
   const [showOptionsBlock, setShowOptionsBlock] = useState<boolean>(false);
 
   const [sortByPrice, setSortByPrice] = useState<boolean>(false);
@@ -51,10 +54,14 @@ const ListResultsScreen = ({navigation}: any) => {
   const [showCurrentCheckOut, setShowCurrentCheckOut] =
     useState<boolean>(false);
 
+  //Redux store retrieve block deckaration block
+
   const {hotelsList, hotelslistFiltered, isLoadingHotels, loadingHotelsError} =
     useSelector((state: ApplicationState) => state.hotelsData);
 
-  const dispatch = useDispatch();
+  //Side effects block
+
+  const dispatch = useDispatch(); //Dispathc the action to retrieve the hotels list after the first rendering
   useEffect(() => {
     dispatch(fetchHotelsList());
   }, [dispatch]);
@@ -68,7 +75,9 @@ const ListResultsScreen = ({navigation}: any) => {
           checkOutSelected,
         ),
       );
-  }, [checkInSelected, checkOutSelected, hotelsList, dispatch]);
+  }, [checkInSelected, checkOutSelected, hotelsList, dispatch]); //Dispatch the filter action whenever the user changes the position of any of the sliders
+
+  //Render block
 
   const extractKey = (item: IHotel) => item.id.toString();
 
@@ -97,11 +106,12 @@ const ListResultsScreen = ({navigation}: any) => {
       hotelsList && (
         <>
           <TouchableOpacity
+            testID={'filtersOnPress'}
             onPress={() => setShowOptionsBlock(!showOptionsBlock)}>
             <Text
               style={
                 hotelsFound
-              }>{`${hotelsList.length} hotels found - Tap forfiltering options`}</Text>
+              }>{`${hotelsList.length} hotels found - Tap for filtering options`}</Text>
           </TouchableOpacity>
           {showOptionsBlock && (
             <>
@@ -191,6 +201,7 @@ const ListResultsScreen = ({navigation}: any) => {
         <>
           {renderHotelCheckingFilters()}
           <FlatList
+            testID={'hotelsFlatList'}
             data={hotelslistFiltered}
             renderItem={renderItem}
             keyExtractor={extractKey}

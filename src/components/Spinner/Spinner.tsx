@@ -1,5 +1,6 @@
 import React from 'react';
 import {ActivityIndicator, View} from 'react-native';
+
 import styles from './Spinner.style';
 import theme from 'theme/theme';
 
@@ -8,7 +9,11 @@ const Spinner = () => {
 
   return (
     <View style={spinnerContainer}>
-      <ActivityIndicator color={theme.colors.greyDark} size={'large'} />
+      <ActivityIndicator
+        color={theme.colors.terracota}
+        size={'large'}
+        testID="spinerTestId"
+      />
     </View>
   );
 };
