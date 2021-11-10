@@ -27,7 +27,7 @@ describe('Given the HotelDetailsScreen component', () => {
     it('The checkout info should be rendered', () => {
       expect(
         getByText(
-          `Checkout: from: ${initialProps.route.params.hotelDetails.checkOut.from} to: ${initialProps.route.params.hotelDetails.checkOut.to}`,
+          `- Checkout: from: ${initialProps.route.params.hotelDetails.checkOut.from} to: ${initialProps.route.params.hotelDetails.checkOut.to}`,
         ),
       ).toBeDefined();
     });

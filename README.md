@@ -17,6 +17,7 @@ Made with React Native + TypeScript
 ## How to run the APP
 
 - Use Xcode to launch the iOS emulator or Android studio to launch the Android emulator
+- The console warnings have been disable, if you want to enable them just comment the code on line 16 on `App.tsx`
 
 ## Code testing
 

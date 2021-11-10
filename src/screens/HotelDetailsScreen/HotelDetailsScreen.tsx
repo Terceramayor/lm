@@ -3,14 +3,14 @@ import {View, Text, Image, ScrollView} from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import Carousel from 'react-native-snap-carousel';
 
-import {MAPBOX_TOKEN} from '@env';
+import {MAPBOX_SECRET_KEY} from '@env';
 import IHotel from 'types/states/IHotel';
 
 import styles from './HotelDetailsScreen.style';
 
 import hoteslDescriptions from 'constants/hoteslDescriptions';
 
-MapboxGL.setAccessToken(MAPBOX_TOKEN);
+MapboxGL.setAccessToken(MAPBOX_SECRET_KEY);
 
 export interface HotelDetailsScreenProps {
   route: {params: {hotelDetails: IHotel}};

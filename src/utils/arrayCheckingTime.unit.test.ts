@@ -21,7 +21,7 @@ describe('Given the arrayCheckingTimes util function', () => {
   describe('When invoked with hotels array to be filtered by checkIn and to keys', () => {
     it('The array should be filtered by checkIn and to', () => {
       expect(arrayCheckingTimes(mockedHotelsArray, 'checkIn', 'to')).toEqual([
-        20, 20,
+        23, 20,
       ]);
     });
   });
