@@ -39,7 +39,7 @@ const ListResultsScreen = ({navigation}: any) => {
     checkboxText,
   } = styles;
 
-  //useState deckaration block
+  //State variables deckaration block
 
   const [showOptionsBlock, setShowOptionsBlock] = useState<boolean>(false);
 
