@@ -11,7 +11,7 @@ export default [
     stars: 4,
     checkIn: {
       from: '14:00',
-      to: '20:00',
+      to: '24:00',
     },
     checkOut: {
       from: '07:00',
